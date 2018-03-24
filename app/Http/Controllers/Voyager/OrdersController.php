@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Voyager;
 
+use App\Accessory;
+use App\TypeAccessory;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\DB;
@@ -288,8 +290,10 @@ class OrdersController extends VoyagerBreadController
         if (view()->exists("voyager::$slug.edit-add")) {
             $view = "voyager::$slug.edit-add";
         }
+        $accessorys = Accessory::all();
+        $types = TypeAccessory::all();
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'types', 'accessorys'));
     }
 
     /**
