@@ -123,14 +123,15 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                @foreach ($accessorys as $accessory)
+                                @foreach ($accessories as $accessory)
                                     <div class="col-md-3">
                                         <label for="name">{{ $accessory->name }}</label>
                                         <select class="form-control select2 select2-hidden-accessible" name="type[]" tabindex="-1" aria-hidden="true">
+                                                <option value="0" >None</option>     
                                             @foreach ($types as $type)
-                                            @if ($type->accessories_id == $accessory->id)
-                                                <option value="{{ $type->id }}">{{ $type->name_type }}</option>                                                        
-                                            @endif
+                                                @if ($type->accessories_id == $accessory->id)
+                                                    <option value="{{ $type->id }}" @foreach ($typesForOrder as $item) @if ($type->id == $item->type_id) selected @endif @endforeach>{{ $type->name_type }}</option>                                                        
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
