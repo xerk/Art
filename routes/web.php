@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('products', 'ProductController@index');
+Route::get('products/{slug}', 'ProductController@show');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

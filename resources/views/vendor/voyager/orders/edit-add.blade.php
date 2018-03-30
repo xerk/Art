@@ -93,11 +93,8 @@
                             @php
                                 $dataTypeRows = $dataType->{(!is_null($dataTypeContent->getKey()) ? 'editRows' : 'addRows' )};
                             @endphp
-                            <div class="row">
-                                <div class="col-md-12">
                                     @foreach($dataTypeRows as $row)
                                         <!-- GET THE DISPLAY OPTIONS -->
-                                        <div class="col-md-6">
                                             @php
                                                 $options = json_decode($row->details);
                                                 $display_options = isset($options->display) ? $options->display : NULL;
@@ -120,11 +117,9 @@
                                                     @endforeach
                                                 </div>
                                             @endif
-                                        </div>
                                     @endforeach
-                                </div>
                                 @foreach ($accessories as $accessory)
-                                    <div class="col-md-3">
+                                    <div class="col-md-6 form-group">
                                         <label for="name">{{ $accessory->name }}</label>
                                         <select class="form-control select2 select2-hidden-accessible" name="type[]" tabindex="-1" aria-hidden="true">
                                                 <option value="0" >None</option>     
@@ -136,7 +131,6 @@
                                         </select>
                                     </div>
                                 @endforeach
-                            </div>
                         </div>
                         <!-- panel-body -->
 
